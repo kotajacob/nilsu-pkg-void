@@ -19,8 +19,9 @@ tasks:
       mkdir -p hostdir/binpkgs/
       sshopts="ssh -o StrictHostKeyChecking=no"
       rsync  --rsh="$sshopts" -avP kota@nilsu.org:/var/www/html/pkg/void/x86_64-repodata hostdir/binpkgs/
-      yes | ./xbps-src binary-bootstrap
-      for f in srcpkgs/*; do ./xbps-src -E pkg $(basename "$f"); done
+      xbps-src binary-bootstrap
+      package=$(common/builds-sr-ht/changed_templates_latest_commit.sh)
+      xbps-src -j$(nproc) -s -a x86_64 -Q pkg $package
   - sign: |
       export PATH=$HOME/XBPS/usr/bin:$PATH
       set +x
