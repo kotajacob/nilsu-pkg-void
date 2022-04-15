@@ -1,0 +1,31 @@
+image: archlinux
+packages:
+  - rsync
+  - wget
+sources:
+  - https://git.sr.ht/~kota/nilsu-pkg-void
+secrets:
+  - 76d7b309-688f-4e71-a0cf-41ab88eaa874
+  - bcb69649-74ec-41d7-aa48-0bbcaad549bc
+  - 76ca0403-1319-425a-882d-4d8384f852b1
+tasks:
+  - xbps: |
+      wget https://alpha.de.repo.voidlinux.org/static/xbps-static-latest.x86_64-musl.tar.xz
+      mkdir XBPS
+      tar xvf xbps-static-latest.x86_64-musl.tar.xz -C XBPS
+  - build: |
+      export PATH=$HOME/XBPS/usr/bin:$PATH
+      cd nilsu-pkg-void
+      mkdir -p hostdir/binpkgs/
+      sshopts="ssh -o StrictHostKeyChecking=no"
+      rsync  --rsh="$sshopts" -avP kota@nilsu.org:/var/www/html/pkg/void/x86_64-repodata hostdir/binpkgs/
+      yes | ./xbps-src binary-bootstrap
+      for f in srcpkgs/*; do ./xbps-src -E pkg $(basename "$f"); done
+  - sign: |
+      export PATH=$HOME/XBPS/usr/bin:$PATH
+      set +x
+      export XBPS_PASSPHRASE=$(cat .key-passphrase)
+      set -x
+      xbps-rindex --sign-pkg --privkey .ssh/bcb69649-74ec-41d7-aa48-0bbcaad549bc nilsu-pkg-void/hostdir/binpkgs/*.xbps
+  - deploy: |
+      rsync -avP nilsu-pkg-void/hostdir/binpkgs/ kota@nilsu.org:/var/www/html/pkg/void/
