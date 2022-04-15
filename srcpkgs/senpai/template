@@ -1,0 +1,24 @@
+# Template file for 'senpai'
+pkgname=senpai
+version=0.0.20211214
+revision=1
+_gitrev=8091752a67781273944e7a79a803b7a671378313
+wrksrc="${pkgname}-${_gitrev}"
+build_style=go
+go_import_path="git.sr.ht/~taiite/senpai"
+go_package="./cmd/senpai"
+hostmakedepends="scdoc"
+short_desc="IRC client that works best with bouncers"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="ISC"
+homepage="git.sr.ht/~taiite/senpai"
+distfiles="https://git.sr.ht/~taiite/senpai/archive/${_gitrev}.tar.gz"
+checksum=daab2f9eeb7fc23af80fba96a453e50d9cbd9941ffa82d08f571a2f6aadc880f
+
+post_install() {
+	scdoc <doc/senpai.1.scd >doc/senpai.1
+	scdoc <doc/senpai.5.scd >doc/senpai.5
+	vman doc/senpai.1
+	vman doc/senpai.5
+	vlicense LICENSE
+}
