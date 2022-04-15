@@ -1,0 +1,20 @@
+# Template file for 'pcf'
+pkgname=pcf
+version=2.0.4
+revision=1
+build_style=go
+go_import_path="git.sr.ht/~kota/pcf"
+go_ldflags="-X main.Version=${version}"
+hostmakedepends="scdoc"
+short_desc="Command line sha1/FTP-based pastebin client"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="git.sr.ht/~kota/pcf"
+distfiles="https://git.sr.ht/~kota/pcf/archive/v${version}.tar.gz"
+wrksrc="${pkgname}-v${version}"
+checksum=6a0f008334cdcb15b5230dc9521b7e04055ff6f35ca17efd6192f2ffa5f8f27a
+
+post_install() {
+	scdoc < pcf.1.scd | sed "s/VERSION/${version}/g" > pcf.1
+	vman pcf.1
+}
