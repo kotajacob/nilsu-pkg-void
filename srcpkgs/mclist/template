@@ -1,0 +1,13 @@
+# Template file for 'mclist'
+pkgname=mclist
+version=1.0.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/mclist"
+short_desc="Minecraft server listing"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="git.sr.ht/~kota/mclist"
+distfiles="https://git.sr.ht/~kota/mclist/archive/v${version}.tar.gz"
+checksum=72f99057bf14e749f5497e6d83eff837e8a6f09213864bb6edb80de4c4079d4e
