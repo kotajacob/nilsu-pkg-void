@@ -15,3 +15,9 @@ Then run and accept the key when prompted:
 ```
 sudo xbps-install -Su
 ```
+
+# List all packages
+You can list all packages in this repo using `xpkg` from `xtools`:
+```
+xpkg -R https://pkg.nilsu.org/void -a
+```
