@@ -1,0 +1,19 @@
+# Template file for 'paleta'
+pkgname=paleta
+version=1.0.2
+revision=1
+build_style=gnu-makefile
+short_desc="Change terminal colors on-the-fly."
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="MIT"
+homepage="https://github.com/dylanaraps/paleta"
+distfiles="https://github.com/dylanaraps/paleta/archive/refs/tags/${version}.tar.gz"
+checksum=b6a44653266598cd4e027703b0b06acb3a753f632abf87ea30732d139cf1bd16
+
+post_install() {
+	for file in palettes/*; do
+		vsconf $file
+	done
+
+	vlicense LICENSE
+}
