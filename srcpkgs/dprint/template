@@ -1,0 +1,21 @@
+# Template file for 'dprint'
+pkgname=dprint
+version=0.2.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/dprint"
+go_ldflags="-X main.Version=${version}"
+hostmakedepends="scdoc"
+short_desc="Print values from .desktop files"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="https://git.sr.ht/~kota/dprint"
+changelog="https://git.sr.ht/~kota/dprint/log"
+distfiles="https://git.sr.ht/~kota/dprint/archive/v${version}.tar.gz"
+checksum=eff2e43235e373ccd34e4f191ab973650bffb6c4ed7a318f887b1d502135a169
+
+post_install() {
+	scdoc < dprint.1.scd | sed "s/VERSION/${version}/g" > dprint.1
+	vman dprint.1
+}
