@@ -1,6 +1,6 @@
 # Template file for 'timer'
 pkgname=timer
-version=1.0.0
+version=1.1.0
 revision=1
 build_style=go
 go_import_path="git.sr.ht/~kota/timer"
@@ -12,7 +12,7 @@ license="GPL-3.0-or-later"
 homepage="git.sr.ht/~kota/timer"
 distfiles="https://git.sr.ht/~kota/timer/archive/v${version}.tar.gz"
 wrksrc="${pkgname}-v${version}"
-checksum=a18f4ad6b6899cf10e39c5f284c3ea2464cb93c5405c04bee1d7bd9aef0cd03c
+checksum=6b9b52be5c8412b6e19269aa8c1c327ffbd58008043b9fe0c4904ce8d782584d
 
 post_install() {
 	scdoc < doc/timer.1.scd | sed "s/VERSION/${version}/g" > doc/timer.1
