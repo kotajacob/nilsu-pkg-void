@@ -1,8 +1,8 @@
 # Template file for 'senpai'
 pkgname=senpai
-version=0.0.20220415
+version=0.0.20220424
 revision=1
-_gitrev=82acaacb15e5da69c9103894d05c5af72e848c5f
+_gitrev=9bd580fc29a0af1cdcb094605396d6b531be5ed5
 wrksrc="${pkgname}-${_gitrev}"
 build_style=go
 go_import_path="git.sr.ht/~taiite/senpai"
@@ -13,7 +13,7 @@ maintainer="Dakota Walsh <kota@nilsu.org>"
 license="ISC"
 homepage="git.sr.ht/~taiite/senpai"
 distfiles="https://git.sr.ht/~taiite/senpai/archive/${_gitrev}.tar.gz"
-checksum=c48fd40f4a98cbbb787cbea3b2f1c61ef62776307e8183427e3119661fe97b8b
+checksum=f181494a48680bc1391ca32ae54df41647006dd539d72ce6543ecacd05478661
 
 post_install() {
 	scdoc <doc/senpai.1.scd >doc/senpai.1
