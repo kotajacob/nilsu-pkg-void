@@ -1,0 +1,20 @@
+# Template file for 'mcoffline'
+pkgname=mcoffline
+version=1.0.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/mcoffline"
+go_ldflags="-X main.Version=${version}"
+hostmakedepends="scdoc"
+short_desc="Convert minecraft whitelist to offline-mode whitelist"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="git.sr.ht/~kota/mcoffline"
+distfiles="https://git.sr.ht/~kota/mcoffline/archive/v${version}.tar.gz"
+checksum=c30bb01e11bc5604d880d0f43657b87c03df5aaf79663385a6196f5b6af75592
+
+post_install() {
+	scdoc < doc/mcoffline.1.scd | sed "s/VERSION/${version}/g" > doc/mcoffline.1
+	vman doc/mcoffline.1
+}
