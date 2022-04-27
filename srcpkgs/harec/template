@@ -1,0 +1,23 @@
+# Template file for 'harec'
+pkgname=harec
+version=0.0.20220424
+revision=1
+_gitrev=c1caaf00bea2415724b969633cca2e3b2b51a4e6
+wrksrc="${pkgname}-${_gitrev}"
+hostmakedepends="scdoc qbe"
+depends=""
+short_desc="The Hare compiler"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-only"
+homepage="https://harelang.org"
+distfiles="https://git.sr.ht/~sircmpwn/harec/archive/${_gitrev}.tar.gz"
+checksum=70304cb884a8dec507aab0fe35cdc20508eae47cfcb48fa0a02fd603d3a071f9
+
+do_build() {
+	./configure --prefix=/usr
+	make
+}
+
+do_install() {
+	make DESTDIR=${DESTDIR} install
+}
