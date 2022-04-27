@@ -21,6 +21,8 @@ tasks:
       rsync  --rsh="$sshopts" -avP kota@nilsu.org:/var/www/html/pkg/void/x86_64-repodata hostdir/binpkgs/
       yes | ./xbps-src binary-bootstrap
       package=$(./common/builds-sr-ht/changed_templates_latest_commit.sh)
+      echo "repository=https://pkg.nilsu.org/void" >> etc/xbps.d/repos-remote.conf
+      echo "" > etc/xbps.d/repos-local.conf
       ./xbps-src -j$(nproc) -s -Q pkg $package
   - sign: |
       export PATH=$HOME/XBPS/usr/bin:$PATH
