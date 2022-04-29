@@ -1,6 +1,6 @@
 # Template file for 'mcoffline'
 pkgname=mcoffline
-version=2000.0.0
+version=2001.0.0
 revision=1
 wrksrc="${pkgname}-v${version}"
 build_style=go
@@ -12,7 +12,7 @@ maintainer="Dakota Walsh <kota@nilsu.org>"
 license="GPL-3.0-or-later"
 homepage="git.sr.ht/~kota/mcoffline"
 distfiles="https://git.sr.ht/~kota/mcoffline/archive/v${version}.tar.gz"
-checksum=046cfc648cddfd0d35c5583687278cb32cae76fe9812c04b272d0a56b6f8fdb3
+checksum=5aca45a0e73a8f2081f65880439f4572629e850aeb3cd530645a2bd6997c979e
 
 post_install() {
 	scdoc < doc/mcoffline.1.scd | sed "s/VERSION/${version}/g" > doc/mcoffline.1
