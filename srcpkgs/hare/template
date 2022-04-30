@@ -1,0 +1,27 @@
+# Template file for 'hare'
+pkgname=hare
+version=0.0.20220429
+revision=1
+_gitrev=9c7dd2e0f89bc31a1dd028b566dee3c231f4a992
+wrksrc="${pkgname}-${_gitrev}"
+build_style=gnu-makefile
+hostmakedepends="scdoc"
+makedepends="qbe harec"
+depends="qbe harec"
+short_desc="The Hare systems programming language"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="MPL-2.0 AND GPL-3.0-only"
+homepage="https://harelang.org/"
+distfiles="https://git.sr.ht/~sircmpwn/hare/archive/${_gitrev}.tar.gz"
+checksum=96a885a244e44d5d40eba983c5b5a2b2c301be38dd0bd19afbe54453b8d5264f
+
+do_build() {
+	cp config.example.mk config.mk
+	export VERSION="dev+$(echo "${_gitrev}" | cut -c-7)"
+	export LOCALVER=void
+	make -j1 # XXX: parallel build driver builds are broken
+}
+
+do_install() {
+	make DESTDIR=${DESTDIR} install
+}
