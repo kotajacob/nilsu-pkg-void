@@ -21,3 +21,9 @@ You can list all packages in this repo using `xpkg` from `xtools`:
 ```
 xpkg -R https://pkg.nilsu.org/void -a
 ```
+
+## Contact
+Feel free to write me an email to my public inbox if something needs updated.
+Bonus points if you include the updated template :)
+
+https://lists.sr.ht/~kota/public-inbox
