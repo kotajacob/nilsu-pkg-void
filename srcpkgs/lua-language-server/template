@@ -1,0 +1,45 @@
+# Template file for 'lua-language-server'
+pkgname=lua-language-server
+version=3.2.2
+revision=1
+hostmakedepends="git ninja"
+short_desc="Language server for the Lua language"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/sumneko/lua-language-server"
+changelog="https://github.com/sumneko/lua-language-server/blob/master/changelog.md"
+
+do_fetch() {
+	# We must clone it instead of downloading the tarball because the build
+	# process expects the directory to be a git repository.
+	rm -rf $wrksrc
+	mkdir -p $wrksrc
+	git clone -b ${version} --single-branch \
+	https://github.com/sumneko/lua-language-server $wrksrc
+
+	cd $wrksrc
+	git submodule update --init --recursive
+}
+
+do_build() {
+	ninja -C 3rd/luamake -f compile/ninja/linux.ninja
+	./3rd/luamake/luamake rebuild
+}
+
+do_install() {
+	vlicense LICENSE
+
+	# Install a wrapper script that lauches lua-language-server with the correct
+	# options in the /usr/lib/lua-language-server directory.
+	vbin "${FILESDIR}/lua-language-server"
+
+	vmkdir /usr/lib/${pkgname}
+	vcopy bin /usr/lib/${pkgname}
+
+	vcopy main.lua /usr/lib/${pkgname}
+	vcopy debugger.lua /usr/lib/${pkgname}
+
+	vcopy locale /usr/lib/${pkgname}
+	vcopy meta /usr/lib/${pkgname}
+	vcopy script /usr/lib/${pkgname}
+}
