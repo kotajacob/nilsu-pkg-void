@@ -1,0 +1,14 @@
+# Template file for 'light'
+pkgname=light
+version=0.0.1
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/light"
+short_desc="Adjust your backlight."
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="https://git.sr.ht/~kota/light"
+changelog="https://git.sr.ht/~kota/light/log"
+distfiles="https://git.sr.ht/~kota/light/archive/v${version}.tar.gz"
+checksum=b9a7ef6733e0bbf8edb599291c7482da32bbeb9171ac1af1ef327218fa058e03
