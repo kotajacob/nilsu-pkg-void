@@ -18,7 +18,7 @@ tasks:
       cd nilsu-pkg-void
       mkdir -p hostdir/binpkgs/
       sshopts="ssh -o StrictHostKeyChecking=no"
-      rsync  --rsh="$sshopts" -avP kota@nilsu.org:/var/www/html/pkg/void/x86_64-repodata hostdir/binpkgs/
+      rsync  --rsh="$sshopts" -avP kota@pkg.nilsu.org:/var/www/html/pkg.nilsu.org/void/x86_64-repodata hostdir/binpkgs/
       yes | ./xbps-src binary-bootstrap
       package=$(./common/builds-sr-ht/changed_templates_latest_commit.sh)
       echo "repository=https://pkg.nilsu.org/void" >> etc/xbps.d/repos-remote.conf
@@ -31,4 +31,4 @@ tasks:
       set -x
       xbps-rindex --sign-pkg --privkey .ssh/bcb69649-74ec-41d7-aa48-0bbcaad549bc nilsu-pkg-void/hostdir/binpkgs/*.xbps
   - deploy: |
-      rsync -avP nilsu-pkg-void/hostdir/binpkgs/ kota@nilsu.org:/var/www/html/pkg/void/
+      rsync -avP nilsu-pkg-void/hostdir/binpkgs/ kota@pkg.nilsu.org:/var/www/html/pkg.nilsu.org/void/
