@@ -1,8 +1,8 @@
 # Template file for 'hare'
 pkgname=hare
-version=0.0.20220528
+version=0.0.20220611
 revision=1
-_gitrev=19e380ccb7dfe2bcab5f94e6bd03004e3e2c6005
+_gitrev=01aaa1c2b5f5d91db545095b22b22f4d352fc83d
 wrksrc="${pkgname}-${_gitrev}"
 build_style=gnu-makefile
 hostmakedepends="scdoc"
@@ -13,7 +13,7 @@ maintainer="Dakota Walsh <kota@nilsu.org>"
 license="MPL-2.0 AND GPL-3.0-only"
 homepage="https://harelang.org/"
 distfiles="https://git.sr.ht/~sircmpwn/hare/archive/${_gitrev}.tar.gz"
-checksum=8da977b936e6fcae007677ecee9821c76a6521564c37725ed8a3eae4aaa82dee
+checksum=e0b57042ea76410a40e77e1d5b1ec0a8d875c02622f4623aaf7ed278349fed3f
 
 do_build() {
 	cp config.example.mk config.mk
