@@ -1,6 +1,6 @@
 # Template file for 'difftastic'
 pkgname=difftastic
-version=0.28.0
+version=0.29.1
 revision=1
 build_style=cargo
 short_desc="Diff tool that understands syntax"
@@ -9,7 +9,7 @@ license="MIT"
 homepage="https://github.com/wilfred/difftastic"
 changelog="https://raw.githubusercontent.com/Wilfred/difftastic/master/CHANGELOG.md"
 distfiles="https://github.com/Wilfred/difftastic/archive/refs/tags/${version}.tar.gz"
-checksum=ef8d6dc2eb5d1beb1855636e582891465dd512bf2ad7ba69b1fcae668ca98005
+checksum=d5db9a1af0abd2c836ed2e61752935fea4dbd2e2ef7cf988217a410fe6cfae3f
 
 post_install() {
 	vlicense LICENSE
