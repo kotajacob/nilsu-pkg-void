@@ -1,15 +1,13 @@
 # Template file for 'qbe'
 pkgname=qbe
-version=0.0.20220614
+version=1.0
 revision=1
-_gitrev=6cd5f7028647a88935ec1f7776a08b51eb0fb1c8
-wrksrc="${pkgname}-${_gitrev}"
 short_desc="Simple C compiler backend"
 maintainer="Dakota Walsh <kota@nilsu.org>"
 license="MIT"
 homepage="https://c9x.me/compile/"
-distfiles="https://c9x.me/git/qbe.git/snapshot/qbe-${_gitrev}.tar.gz"
-checksum=780932ce597145a62c96d6b5229d2d37da610b798458b5e519c23541cf67a6eb
+distfiles="https://c9x.me/git/qbe.git/snapshot/qbe-${version}.tar.gz"
+checksum=57838c594c0876602a548e83b5bb0164de86592fcc3c07cb6cc853bdff41206c
 
 
 do_build() {
