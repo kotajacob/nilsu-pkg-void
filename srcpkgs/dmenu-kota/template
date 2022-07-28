@@ -1,0 +1,30 @@
+# Template file for 'dmenu-kota'
+pkgname=dmenu-kota
+version=5.0
+revision=1
+wrksrc="dmenu-${version}"
+makedepends="libXinerama-devel libXft-devel freetype-devel"
+short_desc="Kota's fork of dmenu"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="MIT"
+homepage="https://git.sr.ht/~kota/dmenu"
+changelog="https://git.sr.ht/~kota/dmenu/log"
+distfiles="https://git.sr.ht/~kota/dmenu/archive/${version}.tar.gz"
+checksum=2256f354519870eb87166fb99e72b09840f9130b914af7833af119c3859153c2
+
+do_build() {
+	[ -e ${FILESDIR}/config.h ] && cp ${FILESDIR}/config.h config.h
+	sed -i -e "s|^FREETYPEINC|#FREETYPEINC|g" \
+		-e "s|^X11INC|#X11INC|g" \
+		-e "s|^X11LIB|#X11LIB|g" config.mk
+
+	x11inc=$XBPS_CROSS_BASE/usr/include/X11
+	x11lib=$XBPS_CROSS_BASE/usr/lib
+	freetypeinc=$XBPS_CROSS_BASE/usr/include/freetype2
+	make CC="$CC" ${makejobs} X11INC=$x11inc X11LIB=$x11lib FREETYPEINC=$freetypeinc
+}
+
+do_install() {
+	make PREFIX=/usr DESTDIR=${DESTDIR} install
+	vlicense LICENSE
+}
