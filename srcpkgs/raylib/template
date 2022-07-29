@@ -1,0 +1,17 @@
+# Template file for 'raylib'
+pkgname=raylib
+version=4.0.0
+revision=1
+build_style=cmake
+configure_args="-DBUILD_SHARED_LIBS=ON"
+makedepends="alsa-lib-devel glfw-devel libX11-devel libXcursor-devel libXinerama-devel libXrandr-devel Vulkan-Headers"
+short_desc="Simple and easy-to-use library to enjoy videogames programming"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="Zlib"
+homepage="https://www.raylib.com/"
+distfiles="https://github.com/raysan5/raylib/archive/${version}.tar.gz"
+checksum=11f6087dc7bedf9efb3f69c0c872f637e421d914e5ecea99bbe7781f173dc38c
+
+post_install() {
+	vlicense LICENSE
+}
