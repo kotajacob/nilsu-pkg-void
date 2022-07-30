@@ -24,9 +24,14 @@ do_build() {
 }
 
 do_check() {
+	local testjobs
 	if python3 -c 'import pytest' >/dev/null 2>&1; then
+		if python3 -c 'import xdist' >/dev/null 2>&1; then
+			testjobs="-n $XBPS_MAKEJOBS"
+		fi
 		PYTHONPATH="$(cd build/lib* && pwd)" \
-			python3 -m pytest ${make_check_args} ${make_check_target}
+			${make_check_pre} \
+			python3 -m pytest ${testjobs} ${make_check_args} ${make_check_target}
 	else
 		# Fall back to deprecated setup.py test orchestration without pytest
 		if [ -z "$make_check_target" ]; then
@@ -37,7 +42,7 @@ do_check() {
 		fi
 
 		: ${make_check_target:=test}
-		python3 setup.py ${make_check_target} ${make_check_args}
+		${make_check_pre} python3 setup.py ${make_check_target} ${make_check_args}
 	fi
 }
 

@@ -11,7 +11,7 @@ do_build() {
 do_check() {
 	: ${make_cmd:=cargo}
 
-	${make_cmd} test --release --target ${RUST_TARGET} ${configure_args} \
+	${make_check_pre} ${make_cmd} test --release --target ${RUST_TARGET} ${configure_args} \
 		${make_check_args}
 }
 
@@ -20,7 +20,7 @@ do_install() {
 	: ${make_install_args:=--path .}
 
 	${make_cmd} install --target ${RUST_TARGET} --root="${DESTDIR}/usr" \
-		--locked ${configure_args} ${make_install_args}
+		--offline --locked ${configure_args} ${make_install_args}
 
 	rm -f "${DESTDIR}"/usr/.crates.toml
 	rm -f "${DESTDIR}"/usr/.crates2.json
