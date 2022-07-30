@@ -1,0 +1,30 @@
+# Template file for 'hare-raylib'
+pkgname=hare-raylib
+version=0.0.20220723
+revision=1
+_gitrev=7e495aeac5308e577b40481c082bed4578edeb78
+archs="i686 x86_64"
+wrksrc="${pkgname}-${_gitrev}"
+build_style=gnu-makefile
+hostmakedepends="hare"
+depends="raylib alsa-lib-devel glfw-devel libX11-devel libXcursor-devel libXinerama-devel libXrandr-devel Vulkan-Headers"
+short_desc="Raylib bindings for hare"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="Zlib"
+homepage="https://git.sr.ht/~evantj/hare-raylib"
+changelog="https://git.sr.ht/~evantj/hare-raylib/log"
+distfiles="https://git.sr.ht/~evantj/hare-raylib/archive/${_gitrev}.tar.gz"
+checksum=0e898ccab39ec188caaae717e1ce59055113598a4a820d706c5a516721b5effe
+
+do_build() {
+	make # generates raylib/raylib.ha
+}
+
+do_install() {
+	mkdir -p ${DESTDIR}/usr/src/hare/third-party/raylib
+	install -m644 raylib/*.ha ${DESTDIR}/usr/src/hare/third-party/raylib
+}
+
+post_install() {
+	vlicense LICENCE # lol that typo tho
+}
