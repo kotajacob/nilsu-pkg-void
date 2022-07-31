@@ -1,11 +1,11 @@
 # Template file for 'light'
 pkgname=light
 version=0.0.1
-revision=1
+revision=2
 wrksrc="${pkgname}-v${version}"
 build_style=go
 go_import_path="git.sr.ht/~kota/light"
-short_desc="Adjust your backlight."
+short_desc="Adjust your backlight"
 maintainer="Dakota Walsh <kota@nilsu.org>"
 license="GPL-3.0-or-later"
 homepage="https://git.sr.ht/~kota/light"

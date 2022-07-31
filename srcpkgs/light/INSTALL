@@ -1,0 +1,6 @@
+case "${ACTION}" in
+post)
+	chown root:video usr/bin/light
+	chmod 4750 usr/bin/light
+	;;
+esac
