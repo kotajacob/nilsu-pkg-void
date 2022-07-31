@@ -1,6 +1,6 @@
 # Template file for 'nnn-select'
 pkgname=nnn-select
-version=0.1.0
+version=1.0.0
 revision=1
 wrksrc="${pkgname}-v${version}"
 build_style=gnu-makefile
@@ -11,4 +11,4 @@ license="GPL-3.0-or-later"
 homepage="https://git.sr.ht/~kota/nnn-select"
 changelog="https://git.sr.ht/~kota/nnn-select/log"
 distfiles="https://git.sr.ht/~kota/nnn-select/archive/v${version}.tar.gz"
-checksum=751b30fdb4c79f544bfafdb76c68c96bb191b830a938dde06227b240a36de7ca
+checksum=3e52e0c7d8052bbf1b226c16984d0d5d5231cb5e641b4911b3073f4e6dc4db30
