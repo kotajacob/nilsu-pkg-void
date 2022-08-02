@@ -1,7 +1,7 @@
 # Template file for 'senpai'
 pkgname=senpai
 version=0.0.20220802
-revision=1
+revision=2
 _gitrev=e8ed8e7e13134ee7fc8ac116d58efc55813632a1
 wrksrc="${pkgname}-${_gitrev}"
 build_style=go
