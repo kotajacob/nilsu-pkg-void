@@ -1,8 +1,8 @@
-# Template file for 'light'
-pkgname=light
+# Template file for 'light-kota'
+pkgname=light-kota
 version=0.0.1
 revision=2
-wrksrc="${pkgname}-v${version}"
+wrksrc="light-v${version}"
 build_style=go
 go_import_path="git.sr.ht/~kota/light"
 short_desc="Adjust your backlight"
