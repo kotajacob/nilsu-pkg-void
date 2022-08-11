@@ -1,0 +1,20 @@
+# Template file for 'raccoon'
+pkgname=raccoon
+version=1.0.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/raccoon"
+hostmakedepends="scdoc"
+short_desc="Minecraft rcon client"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-only"
+homepage="https://git.sr.ht/~kota/raccoon"
+changelog="https://git.sr.ht/~kota/raccoon/log"
+distfiles="https://git.sr.ht/~kota/raccoon/archive/v${version}.tar.gz"
+checksum=f793ee4b795204e7146d1e00aedf4abc49e75c91d06c099b9fdab32d9be75f16
+
+post_install() {
+	scdoc < raccoon.1.scd > raccoon.1
+	vman raccoon.1
+}
