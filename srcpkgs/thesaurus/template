@@ -1,0 +1,19 @@
+# Template file for 'thesaurus'
+pkgname=thesaurus
+version=1.0.0
+revision=1
+wrksrc="${pkgname}-v${version}"
+build_style=go
+go_import_path="git.sr.ht/~kota/thesaurus"
+short_desc="Command line thesaurus"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-only"
+homepage="https://git.sr.ht/~kota/thesaurus"
+changelog="https://git.sr.ht/~kota/thesaurus/log"
+distfiles="https://git.sr.ht/~kota/thesaurus/archive/v${version}.tar.gz"
+checksum=f2d932451d009691c8f2024bd1e3a8d24933df1222d76956adea7ef6ffb53635
+
+post_install() {
+	vmkdir usr/share/thesaurus
+	vcopy words.txt usr/share/thesaurus
+}
