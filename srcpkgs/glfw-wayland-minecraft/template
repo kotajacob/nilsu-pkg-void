@@ -1,0 +1,27 @@
+# Template file for 'glfw-wayland-minecraft'
+pkgname=glfw-wayland-minecraft
+version=3.4.0
+_git_commit=62e175ef9fae75335575964c845a302447c012c7
+revision=1
+wrksrc=glfw-${_git_commit}
+build_style=cmake
+configure_args="-DBUILD_SHARED_LIBS=ON -DGLFW_USE_WAYLAND=ON"
+hostmakedepends="extra-cmake-modules pkg-config wayland-devel"
+makedepends="MesaLib-devel glu-devel wayland-devel wayland-protocols
+ libxkbcommon-devel libXrandr-devel libXinerama-devel libXcursor-devel
+ libXi-devel"
+short_desc="GLFW with patches for playing minecraft on wayland"
+maintainer="Henry Naguski <henry@nilsu.org>"
+license="Zlib"
+homepage="https://github.com/Admicos/minecraft-wayland"
+changelog="https://www.glfw.org/changelog.html"
+distfiles="https://github.com/glfw/glfw/archive/${_git_commit}.tar.gz"
+checksum=988f96c57ade99885709b3b17c09f2286591941368606537a2f4beee25618bfe
+provides="glfw-${version}_${revision}"
+replaces="glfw>=0 glfw-wayland>=0"
+
+do_install() {
+	vmkdir usr/lib
+	install -m755 ${wrksrc}/build/src/libglfw.so.${version%.*} ${DESTDIR}/usr/lib/
+	ln -s libglfw.so.${version%.*} ${DESTDIR}/usr/lib/libglfw.so.3
+}
