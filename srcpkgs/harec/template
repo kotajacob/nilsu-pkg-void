@@ -1,8 +1,8 @@
 # Template file for 'harec'
 pkgname=harec
-version=0.0.20220611
+version=0.0.20220827
 revision=1
-_gitrev=cdb79d0f7c775805b97d2a91d387a74dfc71a9d2
+_gitrev=03744ea230c5064adf9820d6390b46ecb5e1e503
 wrksrc="${pkgname}-${_gitrev}"
 hostmakedepends="scdoc qbe"
 depends=""
@@ -11,7 +11,7 @@ maintainer="Dakota Walsh <kota@nilsu.org>"
 license="GPL-3.0-or-only"
 homepage="https://harelang.org"
 distfiles="https://git.sr.ht/~sircmpwn/harec/archive/${_gitrev}.tar.gz"
-checksum=0b97ac3a1fb2d80bf303d03a6b061ffbe00e09fcd8472bfae9f824459e3bcd10
+checksum=8807753113227bef908d00d08e500def9b0431e78c5acaf7fdba7ac5a3ceb10f
 
 do_build() {
 	./configure --prefix=/usr
