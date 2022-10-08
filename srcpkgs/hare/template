@@ -1,8 +1,8 @@
 # Template file for 'hare'
 pkgname=hare
-version=0.0.20220827
+version=0.0.20220927
 revision=1
-_gitrev=21a3e430c87ebfdb5e12aad01306e85a25fdfb4c
+_gitrev=82213191adc25137c704df4786a71bce40b6079f
 wrksrc="${pkgname}-${_gitrev}"
 build_style=gnu-makefile
 hostmakedepends="scdoc"
@@ -13,10 +13,10 @@ maintainer="Dakota Walsh <kota@nilsu.org>"
 license="MPL-2.0 AND GPL-3.0-only"
 homepage="https://harelang.org/"
 distfiles="https://git.sr.ht/~sircmpwn/hare/archive/${_gitrev}.tar.gz"
-checksum=117a1b335b1774c3c9873bfaa81dabd1dc1fade99a0af89806169223feb2a559
+checksum=6a1dbbcce7812c8a19f9e6b7da4ef668525dfc141b1350f3b3cb4d1b2ff1b677
 
 do_build() {
-	cp config.example.mk config.mk
+	cp ${FILESDIR}/config.mk config.mk
 	export VERSION="dev+$(echo "${_gitrev}" | cut -c-7)"
 	export LOCALVER=void
 	make -j1 # XXX: parallel build driver builds are broken
