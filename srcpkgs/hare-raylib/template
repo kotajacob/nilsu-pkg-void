@@ -1,8 +1,8 @@
 # Template file for 'hare-raylib'
 pkgname=hare-raylib
-version=0.0.20220723
+version=0.0.20220824
 revision=1
-_gitrev=7e495aeac5308e577b40481c082bed4578edeb78
+_gitrev=557e554dbf4540a697df51635c609c0a79098109
 archs="i686 x86_64"
 wrksrc="${pkgname}-${_gitrev}"
 build_style=gnu-makefile
@@ -14,7 +14,7 @@ license="Zlib"
 homepage="https://git.sr.ht/~evantj/hare-raylib"
 changelog="https://git.sr.ht/~evantj/hare-raylib/log"
 distfiles="https://git.sr.ht/~evantj/hare-raylib/archive/${_gitrev}.tar.gz"
-checksum=0e898ccab39ec188caaae717e1ce59055113598a4a820d706c5a516721b5effe
+checksum=b4b7a98151c2630e9b059d932ca6f8aa43e5081eff2864dd121bf7908c71a2cf
 
 do_build() {
 	make # generates raylib/raylib.ha
