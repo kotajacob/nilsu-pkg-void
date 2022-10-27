@@ -1,0 +1,21 @@
+# Template file for 'himitsu'
+pkgname=himitsu
+version=0.1
+revision=1
+build_style=gnu-makefile
+makedepends="hare scdoc"
+short_desc="A secret storage manager"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-only"
+homepage="https://himitsustore.org"
+distfiles="https://git.sr.ht/~sircmpwn/himitsu/archive/${version}.tar.gz"
+checksum=6566de19d58289dfcdafc476054287fa55a9c4e74d64ba49a5ccbea3473b5a64
+
+# himitsu-devel is a subpkg
+himitsu-devel_package() {
+	short_desc+=" - development files"
+	depends="${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove "usr/src/*"
+	}
+}
