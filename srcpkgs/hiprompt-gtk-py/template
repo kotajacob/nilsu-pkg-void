@@ -1,0 +1,15 @@
+# Template file for 'hiprompt-gtk-py'
+pkgname=hiprompt-gtk-py
+version=0.0.20220816
+revision=1
+_gitrev=7872a36b6f7ca8b1a9084e2d872d6e079f16bd27
+wrksrc="${pkgname}-${_gitrev}"
+build_style=meson
+makedepends="python3-setuptools glib-devel"
+depends="python3 python3-gobject gtk+3"
+short_desc="GTK+ Himitsu prompter for Wayland"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="GPL-3.0-or-later"
+homepage="https://git.sr.ht/~sircmpwn/hiprompt-gtk-py"
+distfiles="https://git.sr.ht/~sircmpwn/hiprompt-gtk-py/archive/${_gitrev}.tar.gz"
+checksum=3245a843e7728957dcccd5aa90539ca9b7f94ec589b6d4e9efc8b4347d8eb98a
