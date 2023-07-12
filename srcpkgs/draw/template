@@ -1,0 +1,17 @@
+# Template file for 'draw'
+pkgname=draw
+version=0.1.1
+revision=1
+build_style=go
+go_import_path="github.com/maaslalani/draw"
+short_desc="Draw in your terminal"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="MIT"
+homepage="https://github.com/maaslalani/draw"
+changelog="https://github.com/maaslalani/draw/releases"
+distfiles="https://github.com/maaslalani/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=e86b7575159181f99584000729e11a32dd009dc394db1a73844542713f060655
+
+post_install() {
+	vlicense LICENSE
+}
