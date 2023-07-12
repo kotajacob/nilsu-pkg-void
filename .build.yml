@@ -5,7 +5,7 @@ packages:
 sources:
   - https://git.sr.ht/~kota/nilsu-pkg-void
 secrets:
-  - 76d7b309-688f-4e71-a0cf-41ab88eaa874
+  - 65dc7683-5d31-442a-b388-62b1d4452851
   - bcb69649-74ec-41d7-aa48-0bbcaad549bc
   - 76ca0403-1319-425a-882d-4d8384f852b1
 tasks:
