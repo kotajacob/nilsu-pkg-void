@@ -1,7 +1,7 @@
 # Template file for 'harec'
 pkgname=harec
 version=0.0.20230611
-revision=1
+revision=2
 _gitrev=174aef484c0b0067f0a131dc52ee05af1a0e5027
 wrksrc="${pkgname}-${_gitrev}"
 hostmakedepends="scdoc qbe"
