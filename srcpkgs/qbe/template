@@ -1,23 +1,27 @@
 # Template file for 'qbe'
 pkgname=qbe
-version=1.0
+version=1.1
 revision=1
-short_desc="Simple C compiler backend"
-maintainer="Dakota Walsh <kota@nilsu.org>"
+build_style=gnu-makefile
+make_use_env=yes
+short_desc="Small embeddable C compiler backend"
+maintainer="Bryce Vandegrift <bryce@brycevandegrift.xyz>"
 license="MIT"
 homepage="https://c9x.me/compile/"
-distfiles="https://c9x.me/git/qbe.git/snapshot/qbe-${version}.tar.gz"
-checksum=57838c594c0876602a548e83b5bb0164de86592fcc3c07cb6cc853bdff41206c
+distfiles="https://c9x.me/compile/release/qbe-${version}.tar.xz"
+checksum=7d0a53dd40df48072aae317e11ddde15d1a980673160e514e235b9ecaa1db12c
 
-
-do_build() {
-	make
-}
-
-do_install() {
-	make STRIP=true PREFIX=/usr DESTDIR=${DESTDIR} install
-}
+# Currently only aarch64 and x86_64 targets are supported and the checks
+# test the compiled binaries.
+case "$XBPS_TARGET_MACHINE" in
+	aarch64*|x86_64*) ;;
+	*) make_check=no ;;
+esac
 
 post_install() {
+	vdoc doc/abi.txt
+	vdoc doc/il.txt
+	vdoc doc/llvm.txt
+
 	vlicense LICENSE
 }
