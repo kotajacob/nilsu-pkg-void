@@ -1,0 +1,26 @@
+# Template file for 'hare-madeline'
+pkgname=hare-madeline
+version=0.0.20230715
+revision=1
+_gitrev=ad5fc67af172aa35cf10472f9981e93ea1eb42ac
+archs="i686 x86_64"
+wrksrc="${pkgname}-${_gitrev}"
+depends="hare"
+short_desc="Tiny readline-alike with some batteries included"
+maintainer="Dakota Walsh <kota@nilsu.org>"
+license="WTFPL"
+homepage="https://git.d2evs.net/~ecs/madeline"
+changelog="https://git.d2evs.net/~ecs/madeline/log"
+distfiles="https://git.d2evs.net/~ecs/madeline/archive/${_gitrev}.tar.gz"
+checksum=5005ef2a1efc494271e8d7f4410974a4c6cdf676422e9f606d40dbca046a565f
+
+do_install() {
+	mkdir -p ${DESTDIR}/usr/src/hare/third-party/made
+	mkdir -p ${DESTDIR}/usr/src/hare/third-party/graph
+	install -m644 made/*.ha ${DESTDIR}/usr/src/hare/third-party/made
+	install -m644 graph/*.ha ${DESTDIR}/usr/src/hare/third-party/graph
+}
+
+post_install() {
+	vlicense LICENSE
+}
